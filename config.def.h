@@ -2,12 +2,12 @@
 
 /* appearance */
 static const char font[] = "monospace:size=9";
-static const char* normbgcolor = "#222222";
-static const char* normfgcolor = "#cccccc";
-static const char* selbgcolor = "#555555";
-static const char* selfgcolor = "#ffffff";
-static const char* urgbgcolor = "#111111";
-static const char* urgfgcolor = "#cc0000";
+static const char* normbgcolor = "#3B4252";
+static const char* normfgcolor = "#ECEFF4";
+static const char* selbgcolor = "#4C566A";
+static const char* selfgcolor = "#D8DEE9";
+static const char* urgbgcolor = "#2E3440";
+static const char* urgfgcolor = "#BF616A";
 static const char before[] = "<";
 static const char after[] = ">";
 static const char titletrim[] = "...";
@@ -23,19 +23,19 @@ static Bool urgentswitch = False;
 static int newposition = 0;
 static Bool npisrelative = False;
 
-#define SETPROP(p)                                                             \
-        {                                                                      \
-                .v = (char*[]) {                                               \
-                        "/bin/sh", "-c",                                       \
-                            "prop=\"`xwininfo -children -id $1 | grep '^     " \
-                            "0x' |"                                            \
-                            "sed -e's@^ *\\(0x[0-9a-f]*\\) "                   \
-                            "\"\\([^\"]*\\)\".*@\\1 \\2@' |"                   \
-                            "xargs -0 printf %b | dmenu -l 10 -w $1`\" &&"     \
-                            "xprop -id $1 -f $0 8s -set $0 \"$prop\"",         \
-                            p, winid, NULL                                     \
-                }                                                              \
-        }
+#define SETPROP(p)                                                 \
+    {                                                              \
+        .v = (char*[]) {                                           \
+            "/bin/sh", "-c",                                       \
+                "prop=\"`xwininfo -children -id $1 | grep '^     " \
+                "0x' |"                                            \
+                "sed -e's@^ *\\(0x[0-9a-f]*\\) "                   \
+                "\"\\([^\"]*\\)\".*@\\1 \\2@' |"                   \
+                "xargs -0 printf %b | dmenu -l 10 -w $1`\" &&"     \
+                "xprop -id $1 -f $0 8s -set $0 \"$prop\"",         \
+                p, winid, NULL                                     \
+        }                                                          \
+    }
 
 #define MODKEY ControlMask
 static Key keys[] = {

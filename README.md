@@ -20,3 +20,9 @@ Running tabbed
 --------------
 See the man page for details.
 
+Patches:
+--------
+* Nord colours
+* keycode
+* keyrelease
+* hidetabs
